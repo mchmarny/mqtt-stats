@@ -1,0 +1,31 @@
+{
+  "name": "mqtt-stats",
+  "version": "0.1.1",
+  "description": "Simple MQQT monitor with dynamically defined publishers",
+  "main": "stats.js",
+  "dependencies": {
+    "mqtt": "*",
+    "winston": "*",
+    "redis": "*",
+    "hiredis": "*",
+    "dateformat": "*"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mchmarny/mqtt-stats.git"
+  },
+  "keywords": [
+    "mqtt",
+    "stats",
+    "cloud"
+  ],
+  "author": "mchmarny <mark@chmarny.com> (http://mark.chmarny.com/)",
+  "license": "BSD 2-Clause",
+  "bugs": {
+    "url": "https://github.com/mchmarny/mqtt-stats/issues"
+  },
+  "homepage": "https://github.com/mchmarny/mqtt-stats"
+}

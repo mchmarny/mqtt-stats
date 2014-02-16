@@ -1,0 +1,31 @@
+{
+	"log": {
+		"level": "debug",
+		"timestamp": true
+	},
+
+	"mqtt": {
+		"topic": "#",
+		"secure": false,
+		"host": "127.0.0.1",
+		"port": 1883,
+		"args": {
+			"keepalive": 59000
+		}
+	},
+
+	"redis": {
+		"prefix": "topic",
+		"resolution": "yyyy-mm-dd-HH-MM",
+		"topic": "#",
+		"host": "127.0.0.1",
+		"port": 6379,
+		"options": {}
+	},
+
+	"gecko": {
+		"key": "YOUR_GECKO_KEY",
+		"widget": "YOUT_CUSTOM_WIDGET_ID"
+	}
+
+}
