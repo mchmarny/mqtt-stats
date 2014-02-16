@@ -22,20 +22,37 @@ redis.client.hgetall(redis.keyPrefix, function(err, results) {
     process.exit(1);
   } 
 
-  var timeSpan = [];
+  var keys = [];
+  var timeSpans = [];
   var maxVal = 0;
-      
-  for (var item in results){
-    var itemVal = results[item];
-    logger.debug("Item: %j", item);
-    data.item.push(itemVal);
-    timeSpan.push(item);
-    if (itemVal > maxVal) maxVal = itemVal;
+
+  for (var key in results){
+    keys.unshift(key);
   }
 
-  data.settings.axisx.push(timeSpan[0]);
-  data.settings.axisx.push(timeSpan[timeSpan.length-1]);
+  for(i=0; i<keys.length; i++){
+    var itemKey = keys[i];
+    var itemVal = results[keys[i]];
+    logger.debug("Original Key: %s Val: %s", itemKey, itemVal);
+    if (i < 120){
+      //add
+      data.item.push(itemVal);
+      timeSpans.push(itemKey);
+      if (itemVal > maxVal) maxVal = itemVal;
+    }else{
+      //delete
+      logger.debug("Deleting: %s", itemKey);
+      redis.client.hdel(redis.keyPrefix, itemKey);
+    }
+  }
+
+
+  data.settings.axisx.push(timeSpans[timeSpans.length-1]);
+  data.settings.axisx.push(timeSpans[0]);
   data.settings.axisy.push(maxVal);
+
+  console.dir(data);
+
 
   var msg = { "api_key": config.gecko.key, "data": data };
   var msgStr = JSON.stringify(msg);
