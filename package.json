@@ -1,6 +1,6 @@
 {
   "name": "mqtt-stats",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Simple MQQT monitor with dynamically defined publishers",
   "main": "stats.js",
   "dependencies": {
